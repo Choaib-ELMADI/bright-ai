@@ -23,25 +23,25 @@ const routes = [
     {
         label: 'Image Generation',
         icon: ImageIcon,
-        href: '/image-generation',
+        href: '/image',
         color: 'text-pink-700',
     },
     {
         label: 'Video Generation',
         icon: VideoIcon,
-        href: '/video-generation',
+        href: '/video',
         color: 'text-orange-700',
     },
     {
         label: 'Music Generation',
         icon: Music,
-        href: '/music-generation',
+        href: '/music',
         color: 'text-emerald-500',
     },
     {
         label: 'Code Generation',
         icon: Code,
-        href: '/code-generation',
+        href: '/code',
         color: 'text-green-700',
     },
     {
@@ -55,7 +55,7 @@ const routes = [
 
 const Sidebar = () => {
     return (
-        <div className="p-4 flex flex-col h-full bg-[#111827] text-white">
+        <div className="p-4 flex flex-col h-full overflow-y-auto bg-[#111827] text-white no-scrollbar">
             <Link href='/dashboard' className='flex items-center mb-10 pl-3'>
                 <div className='relative w-7 h-7 mr-3'>
                     <Image 
