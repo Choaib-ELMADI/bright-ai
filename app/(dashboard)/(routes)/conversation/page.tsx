@@ -76,7 +76,7 @@ export default function ConversationPage() {
                                             <Input 
                                                 className='border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent w-full'
                                                 disabled={ isLoading }
-                                                placeholder='How to break into tech?'
+                                                placeholder='How does JWTs work?'
                                                 { ...field }
                                             />
                                         </FormControl>
