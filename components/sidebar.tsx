@@ -3,6 +3,7 @@
 import { LayoutDashboard, MessageSquare, ImageIcon, VideoIcon, Music, Code, Settings } from 'lucide-react';
 const montserrat = Montserrat({ weight: '600', subsets: ['latin'] });
 import { Montserrat } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -54,6 +55,8 @@ const routes = [
 
 
 const Sidebar = () => {
+    const pathname = usePathname();
+
     return (
         <div className="p-4 flex flex-col h-full overflow-y-auto bg-[#111827] text-white no-scrollbar">
             <Link href='/dashboard' className='flex items-center mb-10 pl-3'>
@@ -74,7 +77,10 @@ const Sidebar = () => {
                         <Link 
                             href={ route.href } 
                             key={ route.label } 
-                            className='text-sm group p-3 flex items-center font-medium hover:text-white hover:bg-white/10 rounded-lg transition'
+                            className={ cn(
+                                'text-sm group p-3 flex items-center font-medium hover:text-white hover:bg-white/10 rounded-lg transition',
+                                route.href === pathname ? 'bg-white/10 text-white' : 'text-zinc-300'
+                            )}
                         >
                             <route.icon className={ cn('w-6 h-6 mr-3', route.color) } />
                             { route.label }
