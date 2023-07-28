@@ -9,7 +9,7 @@ interface EmptyProps {
 export const Empty = ({ label }: EmptyProps) => {
     return (
         <div className="h-full p-20 flex flex-col justify-center items-center gap-4">
-            <div className="relative w-30 h-30">
+            <div className="relative w-[6rem] h-[6rem]">
                 <Image 
                     fill
                     src='/logo-trs.png'
