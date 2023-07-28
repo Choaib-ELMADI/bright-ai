@@ -48,7 +48,7 @@ const ProModal = () => {
     
     return (
         <Dialog open={ proModal.isOpen } onOpenChange={ proModal.onClose }>
-            <DialogContent>
+            <DialogContent className='overflow-y-auto max-h-[516px] h-full'>
                 <DialogHeader>
                     <DialogTitle className="flex justify-center items-center flex-col gap-y-4 pb-2">
                         <div className="flex items-center gap-x-2">
@@ -86,10 +86,10 @@ const ProModal = () => {
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                <Button className='w-full' variant='premium' size='lg'>
-                    Upgrade
-                    <Zap className='w-5 h-5 ml-3 fill-yellow-400 text-yellow-400' />
-                </Button>
+                    <Button className='w-full' variant='premium' size='lg'>
+                        Upgrade
+                        <Zap className='w-5 h-5 ml-3 fill-yellow-400 text-yellow-400' />
+                    </Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
