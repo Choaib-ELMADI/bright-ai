@@ -1,10 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ChatCompletionRequestMessage } from 'openai';
-import { Music } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { Music } from 'lucide-react';
 import { useState } from 'react';
 import axios from 'axios';
 import * as z from 'zod';
