@@ -1,12 +1,15 @@
 'use client';
 
-import { LayoutDashboard, MessageSquare, ImageIcon, VideoIcon, Music, Code, Settings } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, ImageIcon, VideoIcon, Music, Code, Settings, Zap } from 'lucide-react';
 const montserrat = Montserrat({ weight: '600', subsets: ['latin'] });
 import { Montserrat } from 'next/font/google';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Progress } from '@/components/ui/progress';
+import { MAX_FREE_TRAIL_COUNT } from '@/constants';
+import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 const routes = [
     {
@@ -54,7 +57,7 @@ const routes = [
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ apiLimitCount }: { apiLimitCount: number }) => {
     const pathname = usePathname();
 
     return (
@@ -71,7 +74,7 @@ const Sidebar = () => {
                 </div>
                 <h1 className={ cn('text-xl font-bold', montserrat.className) }>Bright</h1>
             </Link>
-            <div className='space-y-1'>
+            <div className='space-y-1 mb-10'>
                 {
                     routes.map((route) => (
                         <Link 
@@ -87,6 +90,16 @@ const Sidebar = () => {
                         </Link>
                     ))
                 }
+            </div>
+            <div
+                className='mt-auto bg-white/10 flex flex-col items-center gap-2 justify-center h-max px-2 py-3 rounded-md'
+            >
+                <p>{ `${ apiLimitCount }/${ MAX_FREE_TRAIL_COUNT }` } Free Generations</p>
+                <Progress value={ (apiLimitCount / MAX_FREE_TRAIL_COUNT) * 100 } className='h-3' />
+                <Button className='w-full' variant='premium'>
+                    Upgrade
+                    <Zap className='w-5 h-5 ml-3 fill-yellow-400 text-yellow-400' />
+                </Button>
             </div>
         </div>
     );
