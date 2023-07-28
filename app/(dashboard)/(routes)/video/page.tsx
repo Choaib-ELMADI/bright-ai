@@ -9,6 +9,7 @@ import axios from 'axios';
 import * as z from 'zod';
 
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
+import { useProModal } from '@/hooks/use-pro-modal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Loader } from '@/components/loader';
@@ -21,6 +22,7 @@ import { formSchema } from './constants';
 export default function VideoPage() {
     const router = useRouter();
     const [video, setVideo] = useState<string>();
+    const proModal = useProModal();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -40,7 +42,9 @@ export default function VideoPage() {
             
             form.reset();
         } catch (error: any) {
-            console.log(error);
+            if (error.response.status === 403) {
+                proModal.onOpen();
+            }
         } finally {
             router.refresh();
         };

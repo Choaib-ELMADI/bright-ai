@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { amountOptions, formSchema, resolutionOptions } from './constants';
 import { Card, CardFooter } from '@/components/ui/card';
+import { useProModal } from '@/hooks/use-pro-modal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Loader } from '@/components/loader';
@@ -24,6 +25,7 @@ import { Empty } from '@/components/empty';
 export default function ImagePage() {
     const router = useRouter();
     const [images, setImages] = useState<string[]>([]);
+    const proModal = useProModal();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -47,7 +49,9 @@ export default function ImagePage() {
             
             form.reset();
         } catch (error: any) {
-            console.log(error);
+            if (error.response.status === 403) {
+                proModal.onOpen();
+            }
         } finally {
             router.refresh();
         };

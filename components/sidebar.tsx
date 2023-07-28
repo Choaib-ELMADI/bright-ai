@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useProModal } from '@/hooks/use-pro-modal';
 import { Progress } from '@/components/ui/progress';
 import { MAX_FREE_TRAIL_COUNT } from '@/constants';
 import { Button } from './ui/button';
@@ -59,6 +60,7 @@ const routes = [
 
 const Sidebar = ({ apiLimitCount }: { apiLimitCount: number }) => {
     const pathname = usePathname();
+    const proModal = useProModal();
 
     return (
         <div className="p-4 flex flex-col h-full overflow-y-auto bg-[#111827] text-white no-scrollbar">
@@ -96,7 +98,11 @@ const Sidebar = ({ apiLimitCount }: { apiLimitCount: number }) => {
             >
                 <p>{ `${ apiLimitCount }/${ MAX_FREE_TRAIL_COUNT }` } Free Generations</p>
                 <Progress value={ (apiLimitCount / MAX_FREE_TRAIL_COUNT) * 100 } className='h-3' />
-                <Button className='w-full' variant='premium'>
+                <Button 
+                    className='w-full' 
+                    variant='premium'
+                    onClick={ () => proModal.onOpen() }
+                >
                     Upgrade
                     <Zap className='w-5 h-5 ml-3 fill-yellow-400 text-yellow-400' />
                 </Button>

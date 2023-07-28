@@ -3,6 +3,7 @@ const inter = Inter({ subsets: ['latin'] });
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 
+import { ModalProvider } from '@/components/modal-provider';
 import './globals.css';
 
 
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={ inter.className }>
+          <ModalProvider />
+          { children }
+        </body>
       </html>
     </ClerkProvider>
   );
