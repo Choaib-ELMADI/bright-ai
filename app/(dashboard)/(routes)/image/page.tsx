@@ -181,9 +181,10 @@ export default function ImagePage() {
                                             src={ src }
                                             alt='Generated image'
                                             draggable='false'
+                                            className='rounded-lg'
                                         />
                                     </div>
-                                    <CardFooter className='p-2'>
+                                    <CardFooter className='p-1 pt-2'>
                                         <Button 
                                             onClick={ () => window.open(src) }
                                             variant='secondary' 
