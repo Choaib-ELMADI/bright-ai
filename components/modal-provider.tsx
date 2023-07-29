@@ -1,12 +1,10 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 
 import ProModal from "./pro-modal";
 
-
-
-export const ModalProvider = () => {
+export const ModalProvider = ({ resetLimit }: { resetLimit: () => void }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -17,7 +15,7 @@ export const ModalProvider = () => {
 
     return (
         <>
-            <ProModal />
+            <ProModal resetLimit={resetLimit} />
         </>
     );
 };
