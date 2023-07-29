@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 
 import { ToasterProvider } from "@/components/toaster-provider";
 import { ModalProvider } from "@/components/modal-provider";
+import { CrispProvider } from "@/components/crisp-provider";
 import { resetLimit } from "@/lib/api-limit";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
                 <body className={inter.className}>
                     <ModalProvider resetLimit={resetLimit} />
                     <ToasterProvider />
+                    <CrispProvider />
                     {children}
                 </body>
             </html>
